@@ -1,6 +1,6 @@
 
 Tenda-AC8v4 V16.03.34.06-fromAdvSetMacMtuWan
 
- AC8v4 V16.03.34.06 firmware, firmware,the fromAdvSetMacMtuWan function,the httpd binary file in AC8v4 V16.03.34.06
+AC8v4 V16.03.34.06 firmware, the fromAdvSetMacMtuWan function,the httpd binary file in AC8v4 V16.03.34.06
 
 The Tenda AC8v4 V16.03.34.06 firmware has a stack overflow vulnerability in the fromAdvSetMacMtuWan function. In the function sub_458FBC, the v4, v5, v6, v7, v8, v9 variable receives the wanMTU, wanSpeed, cloneType, mac, serviceName, serverName parameter from a POST request and is later assigned to the function strcpy, which can cause a buffer overflow. The user-provided parameters can exceed the capacity of the a3 array(in the sub_458FBC function) ,and a3 is assigned to &v5[153 * i](in the fromAdvSetMacMtuWan function)  triggering this security vulnerability.Through a carefully constructed ROP chain, RCE can be achieved
