@@ -7,7 +7,7 @@
 Tenda-G3v3.0 V15.11.0.20  was discovered to contain command injection  at url **/goform/umountUSBPartition**
 
 ## Vulnerability Details
-In the function **formSetUSBPartitionUmount**, there is a **doSystemCmd("/usr/sbin/usb umount %s", (const char *)usbPartitionName);** instruction, the value of usbPartitionName comes from the user's post request.
+In the function **formSetUSBPartitionUmount**, there is a doSystemCmd("/usr/sbin/usb umount %s", (const char *)usbPartitionName); instruction, the value of usbPartitionName comes from the user's post request.
 
 ![alt text](image.png)
 
