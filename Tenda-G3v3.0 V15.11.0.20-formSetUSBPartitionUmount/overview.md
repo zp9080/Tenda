@@ -8,14 +8,18 @@ Tenda-G3v3.0 V15.11.0.20  was discovered to contain command injection  at url **
 
 ## Vulnerability Details
 In the function **formSetUSBPartitionUmount**, there is a **doSystemCmd("/usr/sbin/usb umount %s", (const char *)usbPartitionName);** instruction, the value of usbPartitionName comes from the user's post request.
+
 ![alt text](image.png)
 
 The prod_system_param_valid function is in **libcommonprod.so**, and **its filtering is not complete because command injection can still be achieved through the escape character '\n'**
+
 ![alt text](image-1.png)
 
 For example,**in the test.c function, '\n' is used for command injection**
 ![alt text](image-2.png)
+
 **We can see that echo PWN!!! is successfully executed, so the same vulnerability exists in formSetUSBPartitionUmount.**
+
 ![alt text](image-3.png)
 
 ## exp
